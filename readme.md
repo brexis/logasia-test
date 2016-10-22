@@ -11,7 +11,9 @@ This project uses Laravel 5.3, Angular 1.5.8 with MariaDB database.
 
 ## Installation
 
-* Create a new MariaDB database called `logasia`
+* Create a new MariaDB database
+* Duplicate the file `.env.example` to `.env`
+* Change the `DATABASE_URL` environement variable accordind to your database name. (Ex: mysql://user:password@127.0.0.1:3306/database)
 * In the project folder run : `php artisan migrate`
 * Launch the application `php artisan serve`
 * Browse to the url `http://localhost:8000`
