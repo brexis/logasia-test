@@ -1,0 +1,30 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th colspan="8" class="text-center">
+        <a href="" ng-click="prevWeek()"><i class="glyphicon glyphicon-arrow-left"></i></a>
+        {{ month }}
+        <a href="" ng-click="nextWeek()"><i class="glyphicon glyphicon-arrow-right"></i></a>
+      </th>
+    </tr>
+    <tr>
+      <th rowspan="2" class="price-label">Price and availability</th>
+      <th ng-repeat="day in days" class="text-center" ng-class="{'weekend' : isWeekend(day) }"> {{ day.format('ddd') }}</th>
+    </tr>
+    <tr>
+      <th ng-repeat="day in days" class="text-center">{{ day.format('DD') }}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="success" ng-repeat-start="(key, type) in $ctrl.data">
+      <td colspan="8">{{ type.label }}</td>
+    </tr>
+    <tr ng-repeat="property in type.properties">
+      <td>{{ property.label }}</td>
+      <td ng-repeat="(day, vehicle) in type.vehicles" class="text-center">
+        <vehicle-update vehicle="vehicle" property="property.key"></vehicle-update>
+      </td>
+    </tr>
+    <tr ng-repeat-end></tr>
+  </tbody>
+</table>

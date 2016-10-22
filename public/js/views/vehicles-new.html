@@ -1,0 +1,56 @@
+<div class="well">
+  <form method="" class="vehicle-form">
+    <div class="form-group">
+      <div class="row">
+        <label for="" class="col-md-2">Select vehicle:</label>
+        <div class="col-md-4">
+          <select class="form-control">
+            <option value="semi-trailer">Semi-trailer truck</option>
+            <option value="swap-body">20 foot swap-body truck</option>
+            <option value="pup-trailer">28.5 foot pup trailer</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <label for="" class="col-md-2">Select days:</label>
+      <div class="col-md-4">
+        <div class="form-group">
+          <div class="row">
+            <div class="col-md-6">
+              <label for="">From </label>
+            </div>
+            <div class="col-md-6">
+              <input type="date" name="name" value="" class="form-control">
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-md-6">
+              <label for="">To</label>
+            </div>
+            <div class="col-md-6">
+              <input type="date" name="name" value="" class="form-control">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <div class="row">
+            <div class="col-md-6">
+              <label for="">Refine days:</label>
+            </div>
+            <div class="col-md-6">
+              <label ng-repeat="day in days">
+                <input type="checkbox" value="{{ day }}"> {{ day }}
+              </label>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </form>
+</div>
