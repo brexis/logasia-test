@@ -1,6 +1,6 @@
 // Vehicle list Component
 function vehicleListController($scope, Vehicle) {
-  let busy = false, currentBeginDate = null;
+  let busy = false, currentBegin = null, currentEnd = null;
 
   $scope.data = {
     'semi-truck' : {
@@ -38,29 +38,28 @@ function vehicleListController($scope, Vehicle) {
     },
   };
 
-  $scope.query = function (begin) {
+  $scope.query = function (begin, end) {
     if (busy) return;
-    let end = begin.clone().endOf('week');
     let days = end.diff(begin, 'days');
-    currentBeginDate = begin;
+    currentBegin = begin;
+    currentEnd = end;
     busy = true;
 
     Vehicle.query({
       'from': begin.format('YYYY-MM-DD'),
       to: end.format('YYYY-MM-DD')
     }).$promise.then(function(vehicles) {
-      formatData(begin, vehicles);
+      formatData(begin, end, vehicles);
     }).finally(function() {
       busy = false;
     });
   }
 
   $scope.refresh = function() {
-    $scope.query(currentBeginDate);
+    $scope.query(currentBegin, currentEnd);
   }
 
-  function formatData(begin, vehicles) {
-    let end = begin.clone().endOf('week');
+  function formatData(begin, end, vehicles) {
     let days = end.diff(begin, 'days');
 
     for (let i = 0; i <= days; i++) {

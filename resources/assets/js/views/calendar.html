@@ -1,7 +1,7 @@
 <table class="table">
   <thead>
     <tr>
-      <th colspan="8" class="text-center">
+      <th colspan="15" class="text-center">
         <a href="" ng-click="prevWeek()"><i class="glyphicon glyphicon-arrow-left"></i></a>
         {{ month }}
         <a href="" ng-click="nextWeek()"><i class="glyphicon glyphicon-arrow-right"></i></a>
@@ -17,7 +17,7 @@
   </thead>
   <tbody>
     <tr class="success" ng-repeat-start="(key, type) in $ctrl.data">
-      <td colspan="8">{{ type.label }}</td>
+      <td colspan="15">{{ type.label }}</td>
     </tr>
     <tr ng-repeat="property in type.properties">
       <td>{{ property.label }}</td>

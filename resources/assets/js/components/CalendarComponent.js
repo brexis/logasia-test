@@ -1,34 +1,36 @@
 // Calendar component
 function CalendarController($scope) {
   let begin = window.moment().startOf('week');
+  let end = begin.clone().add(13, 'days');
   let ctrl = this;
 
-  function formatMoment(date) {
-    let end = date.clone().endOf('week');
-    let days = end.diff(date, 'days');
+  function formatMoment(begin, end) {
+    let days = end.diff(begin, 'days');
 
-    $scope.month = date.format('MMMM YYYY');
+    $scope.month = begin.format('MMMM YYYY');
     $scope.days = [];
 
     for (var i = 0; i <= days; i++) {
-      let day = date.clone().add(i, 'days');
+      let day = begin.clone().add(i, 'days');
       $scope.days.push(day);
     }
   }
 
-  formatMoment(begin);
-  ctrl.onInit({begin: begin});
+  formatMoment(begin, end);
+  ctrl.onInit({begin: begin, end: end});
 
   $scope.prevWeek = function () {
     begin.subtract(1, 'week');
-    formatMoment(begin);
-    ctrl.onChange({begin: begin});
+    end.subtract(1, 'week');
+    formatMoment(begin, end);
+    ctrl.onChange({begin: begin, end: end});
   }
 
   $scope.nextWeek = function () {
     begin.add(1, 'week');
-    formatMoment(begin);
-    ctrl.onChange({begin: begin});
+    end.add(1, 'week');
+    formatMoment(begin, end);
+    ctrl.onChange({begin: begin, end: end});
   }
 
   $scope.isWeekend = function (date) {
