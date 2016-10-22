@@ -4,6 +4,9 @@
 
 This project uses Laravel 5.3, Angular 1.5.8 with MariaDB database.
 
+## Demo
+[Demo](https://logasia-test.herokuapp.com)
+
 ## Requirements
 
 * Php >=5.6.4
